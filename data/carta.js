@@ -49,8 +49,8 @@ window.CARTA = {
         { nombre: "Mocca", precio: 10, descripcion: "", foto: "", destacado: false },
         { nombre: "Cappuccino", precio: 13, descripcion: "", foto: "", destacado: false },
         { nombre: "Cappuccino pistacho", precio: 13, descripcion: "", foto: "", destacado: false },
-        { nombre: "Cappuccino nutella", precio: 13, descripcion: "", foto: "", destacado: false },
-        { nombre: "Iced late", precio: 12, descripcion: "", foto: "", destacado: false },
+        { nombre: "Cappuccino nutella", precio: 12, descripcion: "", foto: "", destacado: false },
+        { nombre: "Iced late", precio: null, descripcion: "", foto: "", destacado: false },
         { nombre: "Iced late Nutella /pistacho/lotus", precio: 13, descripcion: "", foto: "", destacado: false },
         { nombre: "Espresso", precio: 8, descripcion: "", foto: "", destacado: false }
       ]
