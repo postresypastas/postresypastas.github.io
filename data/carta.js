@@ -39,7 +39,7 @@ window.CARTA = {
 
     // Código de Google Analytics para contar visitas (empieza con "G-").
     // Vacío = no se mide nada.
-    googleAnalytics: ""
+    googleAnalytics: "G-304V6T3QGZ"
   },
 
   categorias: [
