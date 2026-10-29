@@ -74,6 +74,19 @@
       "</button></li>";
   }
 
+  /* ---------- Contador de visitas (Google Analytics) ---------- */
+  const idAnaliticas = String(negocio.googleAnalytics || "").trim();
+  if (/^G-[A-Z0-9]+$/i.test(idAnaliticas)) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", idAnaliticas);
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(idAnaliticas);
+    document.head.appendChild(script);
+  }
+
   /* ---------- Textos del negocio y WhatsApp ---------- */
   $$("[data-texto]").forEach((el) => {
     const valor = negocio[el.getAttribute("data-texto")];

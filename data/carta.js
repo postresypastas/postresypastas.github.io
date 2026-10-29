@@ -35,7 +35,11 @@ window.CARTA = {
     mensajeWhatsapp: "Hola, vengo de la carta digital.",
 
     // Dirección pública de la carta cuando esté publicada (para el QR).
-    urlPublica: "https://postresypastas.github.io/"
+    urlPublica: "https://postresypastas.github.io/",
+
+    // Código de Google Analytics para contar visitas (empieza con "G-").
+    // Vacío = no se mide nada.
+    googleAnalytics: ""
   },
 
   categorias: [
