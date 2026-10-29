@@ -1,0 +1,2 @@
+Copia aquí las fotos de los productos (cuadradas, unos 1200 x 1200 px, menos de 300 KB).
+Luego escribe la ruta en data/carta.js, por ejemplo: foto: "img/productos/cortado.webp"

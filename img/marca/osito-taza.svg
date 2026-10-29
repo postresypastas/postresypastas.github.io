@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 340" role="img" aria-label="Osito de Postres y pastas saludando con una taza">
+  <g fill="none" stroke="#F057A2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- brazos (detrás del cuerpo) -->
+    <path d="M118 214 C 90 208 68 190 56 166" stroke-width="40"/>
+    <path d="M118 214 C 90 208 68 190 56 166" stroke="#FFF9F6" stroke-width="30"/>
+    <path d="M214 214 C 232 228 244 244 256 256" stroke-width="40"/>
+    <path d="M214 214 C 232 228 244 244 256 256" stroke="#FFF9F6" stroke-width="30"/>
+    <!-- cuerpo -->
+    <path d="M108 176 C 86 222 82 290 88 342 H 244 C 250 290 246 222 224 176" fill="#FFF9F6"/>
+    <ellipse cx="166" cy="294" rx="48" ry="40" fill="#FBDDEB" stroke="none"/>
+    <!-- patita que saluda -->
+    <circle cx="54" cy="160" r="22" fill="#FFF9F6"/>
+    <ellipse cx="54" cy="165" rx="9" ry="7" fill="#FBDDEB" stroke="none"/>
+    <circle cx="44" cy="151" r="3.6" fill="#FBDDEB" stroke="none"/>
+    <circle cx="54" cy="147" r="3.6" fill="#FBDDEB" stroke="none"/>
+    <circle cx="64" cy="151" r="3.6" fill="#FBDDEB" stroke="none"/>
+    <path d="M22 142 q -6 14 0 28 M 30 124 q -12 8 -14 22" stroke-width="4"/>
+    <!-- orejas -->
+    <circle cx="102" cy="64" r="28" fill="#FFF9F6"/>
+    <circle cx="102" cy="64" r="14" fill="#FBDDEB" stroke="none"/>
+    <circle cx="230" cy="64" r="28" fill="#FFF9F6"/>
+    <circle cx="230" cy="64" r="14" fill="#FBDDEB" stroke="none"/>
+    <!-- cabeza -->
+    <ellipse cx="166" cy="122" rx="84" ry="72" fill="#FFF9F6"/>
+    <!-- lazo -->
+    <path d="M226 52 L 206 38 C 202 50 202 62 206 72 Z M226 52 L 248 44 C 250 56 248 66 242 74 Z" fill="#F057A2" stroke-width="3"/>
+    <circle cx="226" cy="56" r="7" fill="#F057A2" stroke="none"/>
+    <!-- cara -->
+    <ellipse cx="166" cy="148" rx="31" ry="23" fill="#FBDDEB" stroke="none"/>
+    <path d="M155 137 q 11 -6 22 0 q -2 10 -11 11 q -9 -1 -11 -11z" fill="#F057A2" stroke="none"/>
+    <path d="M166 148 v6 M166 154 q -7 8 -14 2 M166 154 q 7 8 14 2" stroke-width="4"/>
+    <ellipse cx="132" cy="116" rx="6.5" ry="8" fill="#F057A2" stroke="none"/>
+    <ellipse cx="200" cy="116" rx="6.5" ry="8" fill="#F057A2" stroke="none"/>
+    <circle cx="134" cy="113" r="2" fill="#FFF9F6" stroke="none"/>
+    <circle cx="202" cy="113" r="2" fill="#FFF9F6" stroke="none"/>
+    <ellipse cx="114" cy="146" rx="12" ry="7.5" fill="#F9B8D5" stroke="none"/>
+    <ellipse cx="218" cy="146" rx="12" ry="7.5" fill="#F9B8D5" stroke="none"/>
+    <!-- salpicadura del café -->
+    <path d="M258 228 C 262 214 272 206 276 194 C 279 184 276 176 280 170 C 285 163 295 165 294 175 C 293 184 296 190 304 190 C 312 190 316 198 314 206 C 312 214 316 220 318 228 Z" fill="#F057A2" stroke="none"/>
+    <circle cx="302" cy="154" r="5.5" fill="#F057A2" stroke="none"/>
+    <circle cx="320" cy="176" r="3.5" fill="#F057A2" stroke="none"/>
+    <circle cx="268" cy="182" r="3" fill="#F057A2" stroke="none"/>
+    <!-- taza -->
+    <path d="M246 224 H 330 C 329 262 318 292 288 296 C 258 292 247 262 246 224 Z" fill="#FFF9F6"/>
+    <path d="M328 238 c 22 -4 26 30 -4 30"/>
+    <path d="M300 250 c -2 16 -8 28 -20 34" stroke-width="4" stroke="#FBDDEB"/>
+    <!-- patita que sostiene la taza -->
+    <circle cx="258" cy="258" r="21" fill="#FFF9F6"/>
+    <path d="M248 250 q 6 4 4 12 M258 246 q 6 4 4 12" stroke-width="3.5"/>
+  </g>
+</svg>

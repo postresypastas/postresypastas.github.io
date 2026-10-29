@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Código QR de la carta | Postres y pastas</title>
+  <link rel="icon" href="../img/marca/osito-cara.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/fuentes.css">
+  <style>
+    :root { --leche: #FFF9F6; --frambuesa: #C82A76; --algodon: #FBDDEB; --cacao: #4A2C34; --cacao-suave: #7A5A62; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--leche); color: var(--cacao); font: 400 1rem/1.5 "Poppins", system-ui, sans-serif; }
+    main { max-width: 980px; margin: 0 auto; padding: 40px 24px 64px; display: grid; gap: 40px; }
+    @media (min-width: 820px) { main { grid-template-columns: 1fr 420px; align-items: start; } }
+    h1 { margin: 0 0 8px; font: italic 500 2.25rem/1.15 "Lora", Georgia, serif; color: var(--frambuesa); }
+    p { margin: 0 0 14px; max-width: 52ch; }
+    .suave { color: var(--cacao-suave); }
+    label { display: block; font-weight: 500; margin: 26px 0 8px; }
+    input[type="url"] {
+      width: 100%; min-height: 54px; padding: 0 18px; border-radius: 16px;
+      border: 1.5px solid var(--algodon); background: #fff; font: inherit; color: inherit;
+    }
+    input[type="url"]:focus { outline: 3px solid var(--frambuesa); outline-offset: 2px; }
+    .casilla { display: flex; gap: 10px; align-items: center; font-weight: 400; margin-top: 18px; }
+    .casilla input { width: 20px; height: 20px; accent-color: var(--frambuesa); }
+    .vista { background: #fff; border-radius: 28px; padding: 28px; text-align: center; box-shadow: 0 16px 40px -28px rgba(168, 31, 96, .6); }
+    canvas { width: 100%; max-width: 340px; height: auto; display: block; margin: 0 auto; }
+    .vacio { padding: 60px 10px; color: var(--cacao-suave); }
+    .botones { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+    .boton {
+      display: inline-flex; align-items: center; min-height: 50px; padding: 0 22px; border-radius: 999px;
+      background: var(--frambuesa); color: #fff; text-decoration: none; font-weight: 500;
+    }
+    .boton--suave { background: var(--algodon); color: #A81F60; }
+    .aviso { margin-top: 14px; font-size: .9375rem; color: #A81F60; }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <h1>Código QR de la carta</h1>
+      <p>Pega aquí la dirección pública de la carta, la misma que se abre en el navegador después de publicarla. El código se crea en tu computadora, no depende de ninguna página externa y no caduca.</p>
+      <p class="suave">Antes de imprimirlo, escanéalo con dos celulares distintos y confirma que abre la carta.</p>
+
+      <label for="url">Dirección de la carta</label>
+      <input id="url" type="url" inputmode="url" placeholder="https://..." autocomplete="off" spellcheck="false">
+      <p class="aviso" id="aviso" hidden></p>
+
+      <label class="casilla"><input type="checkbox" id="osito" checked> Poner el osito en el centro</label>
+    </section>
+
+    <section class="vista" aria-live="polite">
+      <canvas id="lienzo" width="1200" height="1200" hidden aria-label="Código QR de la carta"></canvas>
+      <p class="vacio" id="vacio">Todavía no hay una dirección pública. Cuando publiques la carta, pégala a la izquierda y aquí aparecerá el código.</p>
+      <div class="botones" id="botones" hidden>
+        <a class="boton" id="png" download="qr-carta-postres-y-pastas.png">Descargar PNG</a>
+        <a class="boton boton--suave" id="svg" download="qr-carta-postres-y-pastas.svg">Descargar SVG (para imprenta)</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../data/carta.js"></script>
+  <script src="qr-codigo.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    const COLOR = "#4A2C34";
+    const MARGEN = 4; // módulos de borde blanco que exige el estándar
+    const OSITO = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="68 28 196 172"><g fill="none" stroke="#F057A2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="102" cy="64" r="28" fill="#FFF9F6"/><circle cx="102" cy="64" r="14" fill="#FBDDEB" stroke="none"/><circle cx="230" cy="64" r="28" fill="#FFF9F6"/><circle cx="230" cy="64" r="14" fill="#FBDDEB" stroke="none"/><ellipse cx="166" cy="122" rx="84" ry="72" fill="#FFF9F6"/><path d="M226 52 L 206 38 C 202 50 202 62 206 72 Z M226 52 L 248 44 C 250 56 248 66 242 74 Z" fill="#F057A2" stroke-width="3"/><circle cx="226" cy="56" r="7" fill="#F057A2" stroke="none"/><ellipse cx="166" cy="148" rx="31" ry="23" fill="#FBDDEB" stroke="none"/><path d="M155 137 q 11 -6 22 0 q -2 10 -11 11 q -9 -1 -11 -11z" fill="#F057A2" stroke="none"/><path d="M166 148 v6 M166 154 q -7 8 -14 2 M166 154 q 7 8 14 2" stroke-width="4"/><ellipse cx="132" cy="116" rx="6.5" ry="8" fill="#F057A2" stroke="none"/><ellipse cx="200" cy="116" rx="6.5" ry="8" fill="#F057A2" stroke="none"/><ellipse cx="114" cy="146" rx="12" ry="7.5" fill="#F9B8D5" stroke="none"/><ellipse cx="218" cy="146" rx="12" ry="7.5" fill="#F9B8D5" stroke="none"/></g></svg>';
+
+    const entrada = document.getElementById("url");
+    const conOsito = document.getElementById("osito");
+    const lienzo = document.getElementById("lienzo");
+    const aviso = document.getElementById("aviso");
+    const imgOsito = new Image();
+    imgOsito.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(OSITO);
+
+    const guardada = window.CARTA && window.CARTA.negocio && window.CARTA.negocio.urlPublica;
+    if (guardada) entrada.value = guardada;
+
+    function validar(texto) {
+      if (!texto) return "";
+      if (!/^https?:\/\/[^\s/]+\.[^\s/]+/i.test(texto)) return "La dirección debe empezar con https:// y ser la de la carta ya publicada.";
+      if (/^https?:\/\/(localhost|127\.|192\.168\.)/i.test(texto)) return "Esa dirección solo funciona en tu computadora. Usa la dirección pública.";
+      return null;
+    }
+
+    function dibujar() {
+      const texto = entrada.value.trim();
+      const error = validar(texto);
+      aviso.hidden = !error;
+      aviso.textContent = error || "";
+      const listo = error === null;
+      lienzo.hidden = !listo;
+      document.getElementById("botones").hidden = !listo;
+      document.getElementById("vacio").hidden = listo;
+      if (!listo) return;
+
+      const qr = QRCodigo.crear(texto, conOsito.checked ? "H" : "M");
+      const n = qr.tamano + MARGEN * 2;
+      const ctx = lienzo.getContext("2d");
+      const lado = lienzo.width;
+      const mod = lado / n;
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, lado, lado);
+      ctx.fillStyle = COLOR;
+      let ruta = "";
+      for (let y = 0; y < qr.tamano; y++) for (let x = 0; x < qr.tamano; x++) {
+        if (!qr.oscuro(x, y)) continue;
+        ctx.fillRect(Math.floor((x + MARGEN) * mod), Math.floor((y + MARGEN) * mod), Math.ceil(mod), Math.ceil(mod));
+        ruta += "M" + (x + MARGEN) + " " + (y + MARGEN) + "h1v1h-1z";
+      }
+
+      let centroSVG = "";
+      if (conOsito.checked) {
+        const caja = Math.round(qr.tamano * 0.24) | 1; // lado del recuadro central en módulos
+        const ini = (n - caja) / 2;
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(ini * mod, ini * mod, caja * mod, caja * mod);
+        const ancho = caja * mod * 0.86, alto = ancho * 172 / 196;
+        ctx.drawImage(imgOsito, (lado - ancho) / 2, (lado - alto) / 2, ancho, alto);
+        const w = caja * 0.86;
+        centroSVG = '<rect x="' + ini + '" y="' + ini + '" width="' + caja + '" height="' + caja + '" fill="#fff"/>' +
+          OSITO.replace("<svg ", '<svg x="' + (n - w) / 2 + '" y="' + (n - w * 172 / 196) / 2 + '" width="' + w + '" height="' + (w * 172 / 196) + '" ');
+      }
+
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + n + " " + n + '" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path fill="' + COLOR + '" d="' + ruta + '"/>' + centroSVG + "</svg>";
+      document.getElementById("svg").href = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
+      try {
+        document.getElementById("png").href = lienzo.toDataURL("image/png");
+        document.getElementById("png").hidden = false;
+      } catch (e) {
+        document.getElementById("png").hidden = true; // algunos navegadores bloquean el PNG; el SVG sigue disponible
+      }
+    }
+
+    entrada.addEventListener("input", dibujar);
+    conOsito.addEventListener("change", dibujar);
+    if (imgOsito.complete) dibujar(); else imgOsito.onload = dibujar;
+  })();
+  </script>
+</body>
+</html>
