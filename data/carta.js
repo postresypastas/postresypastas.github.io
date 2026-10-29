@@ -25,7 +25,25 @@
 window.CARTA = {
   negocio: {
     nombre: "Postres y pastas",
-    bienvenida: "Un abrazo de oso en cada taza",
+    // Frase de bienvenida de la portada. Cada día a las 8:00 a. m. (hora de Perú)
+    // pasa a la siguiente, en este orden. Al llegar a la última, vuelve a la primera.
+    // Puedes agregar, quitar o cambiar frases; cada una entre comillas y con coma.
+    bienvenida: [
+      "Un abrazo de oso en cada taza",
+      "Hoy el osito ya prendió la cafetera",
+      "Pide tu café y quédate un ratito",
+      "Hay crepes, hay café, hay tiempo",
+      "Endulza tu tarde con nosotros",
+      "Una galleta nunca está de más",
+      "Café calientito para empezar bien",
+      "Hoy toca algo dulce",
+      "Un cappuccino y una buena conversación",
+      "La vida es mejor con manjar",
+      "Para los días grises, torta de chocolate",
+      "Un antojo dulce no se ignora",
+      "El osito recomienda no irte sin postre",
+      "Tu momento dulce del día"
+    ],
     subtitulo: "Café, postres y pastas para quedarse un ratito más.",
     moneda: "S/",
 

@@ -88,8 +88,16 @@
   }
 
   /* ---------- Textos del negocio y WhatsApp ---------- */
+  // Si hay una lista de frases, cambia a la siguiente cada día a las 8:00 a. m. de Perú (UTC-5).
+  // El conteo empieza el 28 de octubre de 2026 a las 8:00 a. m. con la primera frase.
+  const INICIO_FRASES = Date.UTC(2026, 9, 28, 13, 0, 0);
+  const fraseDelDia = (lista) => {
+    const dias = Math.floor((Date.now() - INICIO_FRASES) / 86400000);
+    return lista[((dias % lista.length) + lista.length) % lista.length];
+  };
   $$("[data-texto]").forEach((el) => {
-    const valor = negocio[el.getAttribute("data-texto")];
+    let valor = negocio[el.getAttribute("data-texto")];
+    if (Array.isArray(valor)) valor = valor.length ? fraseDelDia(valor) : "";
     if (valor) el.textContent = valor;
   });
   if (negocio.nombre) document.title = "Carta | " + negocio.nombre;
